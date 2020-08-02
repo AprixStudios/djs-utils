@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to djs-utils 👋</h1>
+<h1 align="center">Welcome to djs-utilities</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/AprixStudios/DJS-Utils#readme" target="_blank">
@@ -17,7 +17,7 @@
 
 > Some handy utilities for discord.js bots
 
-### 🏠 [Homepage](https://github.com/AprixStudios/DJS-Utils#readme)
+### [Homepage](https://github.com/AprixStudios/DJS-Utils#readme)
 
 ## Install
 
@@ -125,13 +125,13 @@ In case the bot doesn't have permissions to send embeds, this function will try 
 
 ## Author
 
-👤 **AprixStudios**
+**AprixStudios**
 
 * Website: https://aprixstudios.xyz/
 * Twitter: [@Aprixiaa](https://twitter.com/Aprixiaa)
 * Github: [@AprixStudios](https://github.com/AprixStudios)
 
-## 🤝 Contributing
+## Contributing
 
 Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/AprixStudios/DJS-Utils/issues). 
 
@@ -143,7 +143,7 @@ Give a ⭐️ if this project helped you!
   <img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
 </a>
 
-## 📝 License
+## License
 
 Copyright © 2020 [AprixStudios](https://github.com/AprixStudios).<br />
 This project is [MIT](https://github.com/AprixStudios/DJS-Utils/blob/master/LICENSE) licensed.

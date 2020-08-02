@@ -1,6 +1,6 @@
 {
   "name": "djs-utilities",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Some handy utilities for discord.js bots",
   "main": "index.js",
   "scripts": {
