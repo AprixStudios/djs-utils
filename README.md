@@ -22,7 +22,7 @@
 ## Install
 
 ```sh
-npm install djs-utils
+npm install djs-utilities
 ```
 
 ## Docs
@@ -31,7 +31,7 @@ npm install djs-utils
 ```js
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const djsUtils = require('djs-utils');
+const djsUtils = require('djs-utilities');
 const utils = new djsUtils.Utils(client);
 ```
 
