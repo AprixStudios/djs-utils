@@ -129,7 +129,7 @@ class Utils {
     }
 
     // Get Time Function
-    async getTime(s) {
+    getTime(s) {
         if (!s) {
             throw new SyntaxError(`s is required, but isn't defined.`);
         }
@@ -192,7 +192,7 @@ class Utils {
         });
     }
 
-    async getPages(fullArr, pageNum, amountPerPage) {
+    getPages(fullArr, pageNum, amountPerPage) {
         if (!fullArr) {
             throw new SyntaxError(`fullArr is required, but isn't defined.`);
         }
@@ -216,7 +216,7 @@ class Utils {
         return pagesObj;
     }
 
-    async setCleanTitle(message, embed, title) {
+    setCleanTitle(message, embed, title) {
         if (!message) {
             throw new SyntaxError(`message is required, but isn't defined.`);
         }
@@ -238,7 +238,7 @@ class Utils {
         if (!message.content.toLowerCase().endsWith(` -c`) && !message.content.toLowerCase().endsWith(` -clean`)) embed.setTitle(title);
     }
 
-    async setCleanFooter(message, embed, footer) {
+    setCleanFooter(message, embed, footer) {
         if (!message) {
             throw new SyntaxError(`message is required, but isn't defined.`);
         }
@@ -260,7 +260,7 @@ class Utils {
         if (!message.content.toLowerCase().endsWith(` -c`) && !message.content.toLowerCase().endsWith(` -clean`)) embed.setFooter(footer);
     }
 
-    async sendSafeEmbed(embed, channel) {
+    sendSafeEmbed(embed, channel) {
         if (!embed) {
             throw new SyntaxError(`embed is required, but isn't defined.`);
         }
