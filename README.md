@@ -1,14 +1,14 @@
 <h1 align="center">Welcome to djs-utilities</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
-  <a href="https://github.com/AprixStudios/DJS-Utils#readme" target="_blank">
+  <a href="https://github.com/Kitsuyo/DJS-Utils#readme" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
-  <a href="https://github.com/AprixStudios/DJS-Utils/graphs/commit-activity" target="_blank">
+  <a href="https://github.com/Kitsuyo/DJS-Utils/graphs/commit-activity" target="_blank">
     <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
   </a>
-  <a href="https://github.com/AprixStudios/DJS-Utils/blob/master/LICENSE" target="_blank">
-    <img alt="License: MIT" src="https://img.shields.io/github/license/AprixStudios/djs-utils" />
+  <a href="https://github.com/Kitsuyo/DJS-Utils/blob/master/LICENSE" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/github/license/Kitsuyo/djs-utils" />
   </a>
   <a href="https://twitter.com/Aprixiaa" target="_blank">
     <img alt="Twitter: Aprixiaa" src="https://img.shields.io/twitter/follow/Aprixiaa.svg?style=social" />
@@ -17,7 +17,7 @@
 
 > Some handy utilities for discord.js bots
 
-### [Homepage](https://github.com/AprixStudios/DJS-Utils#readme)
+### [Homepage](https://github.com/Kitsuyo/DJS-Utils#readme)
 
 ## Install
 
@@ -42,7 +42,8 @@ Get a Discord User securily using mention, name, or id.
 
 | Parameters | Type | Optional | Description | Example |
 | --- | --- | --- | --- | --- |
-| mention | < User Mention, String > | No  | Preferably pass an argument from your arguments array. | `args[0]` |
+| mention | < User Mention, String > | No | Preferably pass an argument from your arguments array. | `args[0]` |
+| mentionOnly | < Boolean > | Yes | If true, this will only get the user from a mention and return nothing if it's not a mention. | `true` |
 
 **Returns:** UserObject
 
@@ -52,8 +53,8 @@ Get a Discord Roles securily using mention, name, or id.
 
 | Parameters | Type | Optional | Description | Example |
 | --- | --- | --- | --- | --- |
-| mention | < Role Mention, String > | No  | Preferably pass an argument from your arguments array. | `args[1]` |
-| roles | < RoleManager > | No  | Must pass `guild.roles` | `guild.roles` |
+| mention | < Role Mention, String > | No | Preferably pass an argument from your arguments array. | `args[1]` |
+| roles | < RoleManager > | No | Must pass `guild.roles` | `guild.roles` |
 
 **Returns:** RoleObject
 
@@ -63,8 +64,8 @@ Get a Discord Channel securily using mention, name, or id.
 
 | Parameters | Type | Optional | Description | Example |
 | --- | --- | --- | --- | --- |
-| mention | < Channel Mention, String > | No  | Preferably pass an argument from your arguments array. | `args[0]` |
-| channels | < GuildChannelManager> | No  | Must pass `guild.channels` | `guild.channels` |
+| mention | < Channel Mention, String > | No | Preferably pass an argument from your arguments array. | `args[0]` |
+| channels | < GuildChannelManager> | No | Must pass `guild.channels` | `guild.channels` |
 
 **Returns:** ChannelObject
 
@@ -74,7 +75,18 @@ Get a sufficient time, from ms, in a format that wont trigger OCD.
 
 | Parameters | Type | Optional | Description | Example |
 | --- | --- | --- | --- | --- |
-| s   | < Number > | No  | Must be a number, as it will calculate the time from the millisecond input in this parameter. Advice: Use `endtime-Date.now()` | `res.endTime-Date.now()` |
+| s   | < Number > | No | Must be a number, as it will calculate the time from the millisecond input in this parameter. Advice: Use `endtime-Date.now()` | `res.endTime-Date.now()` |
+
+**Returns:** String
+
+#### getStringTime
+
+Get a sufficient string time, from ms, in a format that wont trigger OCD.
+
+| Parameters | Type | Optional | Description | Example |
+| --- | --- | --- | --- | --- |
+| s   | < Number > | No | Must be a number, as it will calculate the time from the millisecond input in this parameter. Advice: Use `endtime-Date.now()` | `res.endTime-Date.now()` |
+| dontUseMs | < Boolean > | Yes | Whether or not to calculate using seconds. | `true` |
 
 **Returns:** String
 
@@ -84,7 +96,7 @@ Set a sufficient endtime with the choices `s`, `m`, `h`, `d`, `w`, which you can
 
 | Parameters | Type | Optonal | Description | Example |
 | --- | --- | --- | --- | --- |
-| time | < String > | No  | Must be a string as it uses both numbers and variables in the same parameter. | `args[1]` |
+| time | < String > | No | Must be a string as it uses both numbers and variables in the same parameter. | `args[1]` |
 
 **Returns:** Number (milliseconds)
 
@@ -94,8 +106,8 @@ Easily get pages for your large lists.
 
 | Parameters | Type | Optional | Description | Example |
 | --- | --- | --- | --- | --- |
-| fullArr | < Array > | No  | The array of which to make the pages from. | `['apple', 'pineapple', 'orange', 'grape', 'melon', 'avocado']` |
-| pageNum | < Number > | No  | The page requested. | `1` |
+| fullArr | < Array > | No | The array of which to make the pages from. | `['apple', 'pineapple', 'orange', 'grape', 'melon', 'avocado']` |
+| pageNum | < Number > | No | The page requested. | `1` |
 | amountPerPage | < Number > | Yes | The amount of items per page. Please keep this consistent for the people with OCD. `default: 5` | `10` |
 
 **Returns:** Object: {pages: pages, amount: \`\${pageNum}/\${pagesAmount}\`}
@@ -106,9 +118,9 @@ Check if a message ends with `-c` or `-clean`, if it does, this will make it not
 
 | Parameters | Type | Optional | Description | Example |
 | --- | --- | --- | --- | --- |
-| message | < MessageObject > | No  | The message object, of which it checks the content for. | `message` |
-| embed | < MessageEmbed > | No  | The embed of which to make clean/not clean. | `embed` |
-| title/footer | < String > | No  | The title/footer to put in the embed if it's not clean. | `Banned!` |
+| message | < MessageObject > | No | The message object, of which it checks the content for. | `message` |
+| embed | < MessageEmbed > | No | The embed of which to make clean/not clean. | `embed` |
+| title/footer | < String > | No | The title/footer to put in the embed if it's not clean. | `Banned!` |
 
 **Returns:** Promise: It sets the values in the embed.
 
@@ -118,22 +130,32 @@ In case the bot doesn't have permissions to send embeds, this function will try 
 
 | Parameters | Type | Optional | Description | Example |
 | --- | --- | --- | --- | --- |
-| embed | < MessageEmbed > | No  | The embed of which we're trying to send. | `embed` |
-| channel | < ChannelObject > | No  | The channel of where we will send the embed/message. | `channel` |
+| embed | < MessageEmbed > | No | The embed of which we're trying to send. | `embed` |
+| channel | < ChannelObject > | No | The channel of where we will send the embed/message. | `channel` |
 
 **Returns:** Promise: It sends the embed and sends it as a message if no perms for embeds.
 
+#### unHoist
+
+Unhoist a string.
+
+| Parameters | Type | Optional | Description | Example |
+| --- | --- | --- | --- | --- |
+| name | < String > | No |The string to unhoist. Usually, this would be a member's display name. | `member.displayName` or `! Hoister` |
+
+**Returns:** String
+
 ## Author
 
-**AprixStudios**
+**Kitsuyo**
 
-* Website: https://aprixstudios.xyz/
+* Website: https://kitsuyo.com/
 * Twitter: [@Aprixiaa](https://twitter.com/Aprixiaa)
-* Github: [@AprixStudios](https://github.com/AprixStudios)
+* Github: [@Kitsuyo](https://github.com/Kitsuyo)
 
 ## Contributing
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/AprixStudios/DJS-Utils/issues). 
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/Kitsuyo/DJS-Utils/issues). 
 
 ## Show your support
 
@@ -145,5 +167,5 @@ Give a ⭐️ if this project helped you!
 
 ## License
 
-Copyright © 2020 [AprixStudios](https://github.com/AprixStudios).<br />
-This project is [MIT](https://github.com/AprixStudios/DJS-Utils/blob/master/LICENSE) licensed.
+Copyright © 2020-2021 [Kitsuyo](https://github.com/Kitsuyo).<br />
+This project is [MIT](https://github.com/Kitsuyo/DJS-Utils/blob/master/LICENSE) licensed.
