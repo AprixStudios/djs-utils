@@ -12,42 +12,40 @@ class Utils {
     }
     
     // Get User Function
-    async getUser(mention, mentionOnly) {
+    getUser(mention, mentionOnly) {
         if (!mention) {
             throw new SyntaxError(`mention is required, but isn't defined.`);
         }
         if (typeof mention !== "string") {
             throw new TypeError(`mention is not a string.`);
         }
-        return new Promise(resolve => {
-            if (!mention) return resolve();
-            if (mention.startsWith('<@') && mention.endsWith('>')) {
-                // if it is a mention it will do this
-                mention = mention.slice(2, -1);
-                if (mention.startsWith('!')) {
-                    mention = mention.slice(1);
-                }
-                return resolve(this.client.users.cache.get(mention));
+        if (!mention) return resolve();
+        if (mention.startsWith('<@') && mention.endsWith('>')) {
+            // if it is a mention it will do this
+            mention = mention.slice(2, -1);
+            if (mention.startsWith('!')) {
+                mention = mention.slice(1);
             }
-            else if (!mentionOnly && this.client.users.cache.get(mention)) {
-                // if it is a id it will do this
-                return resolve(this.client.users.cache.get(mention));
-            } else {
-                // if it isn't either of them it will do this
-                if (!mentionOnly && this.client.users.cache.find(u => u.tag.toLowerCase().startsWith(mention.toLowerCase()))) {
-                    // if it can find a user from the input it will do this
-                    return resolve(this.client.users.cache.find(u => u.tag.toLowerCase().startsWith(mention.toLowerCase())));
-                }
-                else {
-                    // if not it wont do anything
-                    return resolve(null);
-                }
+            return this.client.users.cache.get(mention);
+        }
+        else if (!mentionOnly && this.client.users.cache.get(mention)) {
+            // if it is a id it will do this
+            return this.client.users.cache.get(mention);
+        } else {
+            // if it isn't either of them it will do this
+            if (!mentionOnly && this.client.users.cache.find(u => u.tag.toLowerCase().startsWith(mention.toLowerCase()))) {
+                // if it can find a user from the input it will do this
+                return this.client.users.cache.find(u => u.tag.toLowerCase().startsWith(mention.toLowerCase()));
             }
-        });
+            else {
+                // if not it wont do anything
+                return null;
+            }
+        }
     }
 
     // Get Role Function
-    async getRole(mention, roles) {
+    getRole(mention, roles) {
         if (!mention) {
             throw new SyntaxError(`mention is required, but isn't defined.`);
         }
@@ -60,35 +58,33 @@ class Utils {
         if (!roles.cache) {
             throw new TypeError(`roles is not a role list.`);
         }
-        return new Promise(resolve => {
-            if (!mention) return resolve();
-            if (mention.startsWith('<&') && mention.endsWith('>')) {
-                // if it is a mention it will do this
-                mention = mention.slice(2, -1);
-                if (mention.startsWith('!')) {
-                    mention = mention.slice(1);
-                }
-                return resolve(roles.cache.get(mention));
+        if (!mention) return;
+        if (mention.startsWith('<&') && mention.endsWith('>')) {
+            // if it is a mention it will do this
+            mention = mention.slice(2, -1);
+            if (mention.startsWith('!')) {
+                mention = mention.slice(1);
             }
-            else if (roles.cache.get(mention)) {
-                // if it is a id it will do this
-                return resolve(roles.cache.get(mention));
-            } else {
-                // if it isn't either of them it will do this
-                if (roles.cache.find(r => r.name.toLowerCase().startsWith(mention.toLowerCase()))) {
-                    // if it can find a role from the input it will do this
-                    return resolve(roles.cache.find(r => r.name.toLowerCase().startsWith(mention.toLowerCase())));
-                }
-                else {
-                    // if not it wont do anything
-                    return resolve(null);
-                }
+            return roles.cache.get(mention);
+        }
+        else if (roles.cache.get(mention)) {
+            // if it is a id it will do this
+            return roles.cache.get(mention);
+        } else {
+            // if it isn't either of them it will do this
+            if (roles.cache.find(r => r.name.toLowerCase().startsWith(mention.toLowerCase()))) {
+                // if it can find a role from the input it will do this
+                return roles.cache.find(r => r.name.toLowerCase().startsWith(mention.toLowerCase()));
             }
-        });
+            else {
+                // if not it wont do anything
+                return null;
+            }
+        }
     }
 
     // Get Channel Function
-    async getChannel(mention, channels) {
+    getChannel(mention, channels) {
         if (!mention) {
             throw new SyntaxError(`mention is required, but isn't defined.`);
         }
@@ -101,31 +97,29 @@ class Utils {
         if (!channel.cache) {
             throw new TypeError(`channels is not a channel list.`);
         }
-        return new Promise(resolve => {
-            if (!mention) return resolve();
-            if (mention.startsWith('<#') && mention.endsWith('>')) {
-                // if it is a mention it will do this
-                mention = mention.slice(2, -1);
-                if (mention.startsWith('!')) {
-                    mention = mention.slice(1);
-                }
-                return resolve(channels.cache.get(mention));
+        if (!mention) return;
+        if (mention.startsWith('<#') && mention.endsWith('>')) {
+            // if it is a mention it will do this
+            mention = mention.slice(2, -1);
+            if (mention.startsWith('!')) {
+                mention = mention.slice(1);
             }
-            else if (channels.cache.get(mention)) {
-                // if it is a id it will do this
-                return resolve(channels.cache.get(mention));
-            } else {
-                // if it isn't either of them it will do this
-                if (channels.cache.find(c => c.name.toLowerCase().startsWith(mention.toLowerCase()))) {
-                    // if it can find a channel from the input it will do this
-                    return resolve(channels.cache.find(c => c.tag.toLowerCase().startsWith(mention.toLowerCase())));
-                }
-                else {
-                    // if not it wont do anything
-                    return resolve(null);
-                }
+            return channels.cache.get(mention);
+        }
+        else if (channels.cache.get(mention)) {
+            // if it is a id it will do this
+            return channels.cache.get(mention);
+        } else {
+            // if it isn't either of them it will do this
+            if (channels.cache.find(c => c.name.toLowerCase().startsWith(mention.toLowerCase()))) {
+                // if it can find a channel from the input it will do this
+                return channels.cache.find(c => c.tag.toLowerCase().startsWith(mention.toLowerCase()));
             }
-        });
+            else {
+                // if not it wont do anything
+                return null;
+            }
+        }
     }
 
     // Get Time Function
@@ -202,7 +196,7 @@ class Utils {
         //return `${hours}:${mins}:${secs}`;
     }
 
-    async setTime(time) {
+    setTime(time) {
         if (!time) {
             throw new SyntaxError(`time is required, but isn't defined.`);
         }
@@ -210,23 +204,21 @@ class Utils {
             throw new TypeError(`time is not a string.`);
         }
         let times = ['s', 'm', 'h', 'd', 'w'];
-        return new Promise(resolve => {
-            if (!time || !times.some(letter => time.toLowerCase().endsWith(letter)) || isNaN(time.slice(0,-1))) {
-                return resolve(null);
-            } else if (times.some(letter => time.toLowerCase().endsWith(letter)) && !isNaN(time.slice(0,-1))) {
-                let timeInd;
-                let timeAt = time.slice(-1);
-                if (timeAt === 's') timeInd = 1000;
-                if (timeAt === 'm') timeInd = 60000;
-                if (timeAt === 'h') timeInd = 3600000;
-                if (timeAt === 'd') timeInd = 86400000;
-                if (timeAt === 'w') timeInd = 86400000*7;
-                let timeMs = time.slice(0,-1);
-                let timeMsAdd = timeMs*timeInd;
-                let timeMS = Date.now()+timeMsAdd;
-                return resolve(timeMS);
-            }
-        });
+        if (!time || !times.some(letter => time.toLowerCase().endsWith(letter)) || isNaN(time.slice(0,-1))) {
+            return null;
+        } else if (times.some(letter => time.toLowerCase().endsWith(letter)) && !isNaN(time.slice(0,-1))) {
+            let timeInd;
+            let timeAt = time.slice(-1);
+            if (timeAt === 's') timeInd = 1000;
+            if (timeAt === 'm') timeInd = 60000;
+            if (timeAt === 'h') timeInd = 3600000;
+            if (timeAt === 'd') timeInd = 86400000;
+            if (timeAt === 'w') timeInd = 86400000*7;
+            let timeMs = time.slice(0,-1);
+            let timeMsAdd = timeMs*timeInd;
+            let timeMS = Date.now()+timeMsAdd;
+            return resolve(timeMS);
+        }
     }
 
     getPages(fullArr, pageNum, amountPerPage) {
